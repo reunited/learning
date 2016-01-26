@@ -3,6 +3,7 @@ package API.learning;
 import static com.jayway.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.jayway.restassured.RestAssured;
@@ -17,7 +18,15 @@ public class LandLordTest {
 		RestAssured.baseURI = "http://localhost:8080/";
 	}
 
-@Test(priority = 1, enabled = false)
+@DataProvider(name = "validLandLords")
+	public Object[][] createData() {
+		return new Object[][] {
+			{ new LandLord("Test", "Case") },
+			{ new LandLord("Hello", "World") }
+		};
+	}
+
+@Test(priority = 1, enabled = true)
 	public void getLandlords() {
 		
 		when()
@@ -28,10 +37,8 @@ public class LandLordTest {
 		
 	}
 	
-@Test(priority = 2, enabled = true)
-	public void postLandlord01() {
-		
-		LandLord landLord = new LandLord("123", "321");
+@Test(priority = 2, enabled = true, dataProvider = "validLandLords")
+	public void postLandlord01(LandLord landLord) {
 		
 		id = given()
 			.contentType(ContentType.JSON)
@@ -60,11 +67,9 @@ public class LandLordTest {
 			.body("apartments", is(empty()));
 	}
 	
-@Test(priority = 2, enabled = true)
-	public void postLandlord02() {
-		
-		LandLord landLord = new LandLord("Privet", "World", true);
-		
+@Test(priority = 2, enabled = true, dataProvider = "validLandLords")
+	public void postLandlord02(LandLord landLord) {
+
 		String id = given()
 			.contentType(ContentType.JSON)
 			.body(landLord)
@@ -152,7 +157,7 @@ public class LandLordTest {
 		
 	}
 	
-@Test(priority = 5, enabled = false)
+@Test(priority = 5, enabled = true)
 	public void deleteLandlord01() {
 		
 		LandLord landLord = new LandLord("Alexey", "Fruzenshtein");
