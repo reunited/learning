@@ -1,19 +1,22 @@
 package API.learning;
 
 import org.testng.annotations.Test;
+
+import Base.BaseTest;
+
 import static com.jayway.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import java.io.IOException;
 import org.apache.http.HttpStatus;
 
-public class NSGetChartDataTest {
+public class NSGetChartDataTest extends BaseTest {
 
 	String baseURI = "http://accounts.icharts.net/icharts/rest/chartservice/getChartData";
 	
 @Test(priority = 0, enabled = true)
 	public void pieNSLive() throws IOException {
 			
-	String chart = new FileReader().getPropValues("MH7Tzi1N.Prod.NS");
+	String chart = getPropValues("MH7Tzi1N.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7Tzi1N")
@@ -28,10 +31,10 @@ public class NSGetChartDataTest {
 @Test(priority = 1, enabled = true)
 	public void verticalLineNSLive() throws IOException {
 
-	String chart = new FileReader().getPropValues("MH7TziJF.Prod.NS");
+	String chart = getPropValues("MH7RwytH.Prod.NS");
 	
 		given()
-			.param("chartId", "MH7TziJF")
+			.param("chartId", "MH7RwytH")
 			.param("authJsonMap", "{}")
 		.when()
 			.post(baseURI)
@@ -43,7 +46,7 @@ public class NSGetChartDataTest {
 @Test(priority = 2, enabled = true)
 	public void lineNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziJE.Prod.NS");
+	String chart = getPropValues("MH7TziJE.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziJE")
@@ -58,7 +61,7 @@ public class NSGetChartDataTest {
 @Test(priority = 3, enabled = true)
 	public void areaNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziJH.Prod.NS");
+	String chart = getPropValues("MH7TziJH.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziJH")
@@ -73,7 +76,7 @@ public class NSGetChartDataTest {
 @Test(priority = 4, enabled = true)
 	public void halfRingNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziJG.Prod.NS");
+	String chart = getPropValues("MH7TziJG.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziJG")
@@ -88,7 +91,7 @@ public class NSGetChartDataTest {
 @Test(priority = 5, enabled = true)
 	public void ringNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziJB.Prod.NS");
+	String chart = getPropValues("MH7TziJB.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziJB")
@@ -103,7 +106,7 @@ public class NSGetChartDataTest {
 @Test(priority = 6, enabled = true)
 	public void columnNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziJA.Prod.NS");
+	String chart = getPropValues("MH7TziJA.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziJA")
@@ -118,7 +121,7 @@ public class NSGetChartDataTest {
 @Test(priority = 7, enabled = true)
 	public void barNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziJD.Prod.NS");
+	String chart = getPropValues("MH7TziJD.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziJD")
@@ -133,7 +136,7 @@ public class NSGetChartDataTest {
 @Test(priority = 8, enabled = true)
 	public void stacked100BarNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziNF.Prod.NS");
+	String chart = getPropValues("MH7TziNF.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziNF")
@@ -148,7 +151,7 @@ public class NSGetChartDataTest {
 @Test(priority = 9, enabled = true)
 	public void columnNS1Live() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziNE.Prod.NS");
+	String chart = getPropValues("MH7TziNE.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7TziNE")
@@ -163,7 +166,7 @@ public class NSGetChartDataTest {
 @Test(priority = 10, enabled = true)
 	public void stackedColumnNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7RzixE.Prod.NS");
+	String chart = getPropValues("MH7RzixE.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7RzixE")
@@ -178,7 +181,7 @@ public class NSGetChartDataTest {
 @Test(priority = 11, enabled = true)
 	public void stackedBarNSLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7RzixH.Prod.NS");
+	String chart = getPropValues("MH7RzixH.Prod.NS");
 	
 		given()
 			.param("chartId", "MH7RzixH")
@@ -193,8 +196,8 @@ public class NSGetChartDataTest {
 @Test(priority = 12, enabled = true)
 	public void pieNSDatasetLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziNB.Prod.NS");
-	String authJsonMap = new FileReader().getPropValues("Prod.authJsonMap");
+	String chart = getPropValues("MH7TziNB.Prod.NS");
+	String authJsonMap = getPropValues("Prod.authJsonMap");
 	
 		given()
 			.param("chartId", "MH7TziNB")
@@ -209,8 +212,8 @@ public class NSGetChartDataTest {
 @Test(priority = 13, enabled = true)
 	public void columnNSDatasetLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziNG.Prod.NS");
-	String authJsonMap = new FileReader().getPropValues("Prod.authJsonMap");
+	String chart = getPropValues("MH7TziNG.Prod.NS");
+	String authJsonMap = getPropValues("Prod.authJsonMap");
 	
 		given()
 			.param("chartId", "MH7TziNG")
@@ -225,8 +228,8 @@ public class NSGetChartDataTest {
 @Test(priority = 14, enabled = true)
 	public void barNSDatasetLive() throws IOException {
 	
-	String chart = new FileReader().getPropValues("MH7TziNH.Prod.NS");
-	String authJsonMap = new FileReader().getPropValues("Prod.authJsonMap");
+	String chart = getPropValues("MH7TziNH.Prod.NS");
+	String authJsonMap = getPropValues("Prod.authJsonMap");
 	
 		given()
 			.param("chartId", "MH7TziNH")
@@ -241,7 +244,7 @@ public class NSGetChartDataTest {
 @Test(priority = 15, enabled = true)
 	public void invalidChartIdNSLive() throws IOException {
 	
-	String error = new FileReader().getPropValues("invalid.Chart.ID.Error");
+	String error = getPropValues("invalid.Chart.ID.Error");
 	
 		given()
 			.param("chartId", "InvalidChartId")
@@ -256,8 +259,8 @@ public class NSGetChartDataTest {
 @Test(priority = 16, enabled = true)
 	public void invalidChartAuthNSLive() throws IOException {
 	
-	String authJsonMap = new FileReader().getPropValues("Prod.authJsonMap.Invalid");
-	String error = new FileReader().getPropValues("invalid.Login.Error");
+	String authJsonMap = getPropValues("Prod.authJsonMap.Invalid");
+	String error = getPropValues("invalid.Login.Error");
 	
 		given()
 			.param("chartId", "MH7TziNH")
